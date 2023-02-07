@@ -19,16 +19,23 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from menu.views import MenuAPIView
+from menu import views
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/menulist', MenuAPIView.as_view())
-]
+    path('', views.index, name='index'),  # Starting page
+    path('admin/', admin.site.urls),  # Admin panel
+    path('api/menulist/', views.MenuAPIView.as_view()),  # GET all items
+    path('api/menulist/add', views.MenuAddItemAPIView.as_view(), name='menuitem-add'),  #PUT add a new item
+    path('api/menulist/<int:id>', views.RetrieveItemAPIView.as_view(), name='menuitem-detail'),  #GET display item by id
+    path('api/menulist/del/<int:id>', views.DeleteItemAPIView.as_view(), name='menuitem-delete'),  #DElETE item by id
+    path('api/menulist/update/<int:id>', views.MenuItemUpdateAPIView.as_view(), name='menuitem-update'),  #PUT update item by id
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# if settings.DEBUG:
-#         urlpatterns += static(settings.MEDIA_URL,
-#                               document_root=settings.MEDIA_ROOT)
-
+"""
+Semi-working login and quarter-working logout. Usage is not recommended!
+# path('login/', views.LoginView.as_view(), name='login'),
+# path('logout/', views.LogoutView.as_view(), name='logout'),
+"""
 
 
