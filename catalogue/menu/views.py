@@ -19,6 +19,12 @@ from rest_framework.authtoken.models import Token
 from .models import Menu
 from .serializers import MenuSerializer, UserSerializer
 
+"""
+If authentication gets fixed copy one of these lines to needed views
+
+authentication_classes = [TokenAuthentication]
+permission_classes = [IsAdminUser]
+"""
 
 def index(request):
     menu_items = Menu.objects.all()
@@ -32,8 +38,6 @@ class MenuAPIView(APIView):
 
 
 class MenuAddItemAPIView(APIView):
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAdminUser]
 
     def post(self, request):
         serializer = MenuSerializer(data=request.data)
@@ -70,8 +74,6 @@ class MenuItemUpdateAPIView(generics.UpdateAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
     lookup_field = 'id'
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAdminUser]
 
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
