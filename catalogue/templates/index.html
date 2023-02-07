@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+
+       h1 {
+      text-align: center;
+       }
+       h3 {
+      text-align: center;
+       }
+       h4 {
+      text-align: center;
+       }
+      .item-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .item {
+        width: 200px;
+        margin: 10px;
+        text-align: center;
+      }
+      .item img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Menu</h1>
+    <h3>Contents created by ChatGPT</h3>
+    <h4>Images created by DALLE-2</h4>
+    <div class="item-container">
+      {% for item in menu_items %}
+        <div class="item">
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.description }}</p>
+          <p>Price: {{ item.price }}</p>
+          <img src="media/{{ item.photo }}" alt="{{ item.title }}">
+        </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
