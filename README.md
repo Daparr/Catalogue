@@ -9,7 +9,7 @@ Django and DRF needed to run this project. Use the package manager pip to instal
 pip install -r requirements.txt
 ```
 ## Usage
-Frontend is not fully implemented, therefore communication with API needs to be performed with help of 3rd party programs i.e. Postman.  
+Frontend is not fully implemented, therefore communication with API needs to be performed with help of 3rd party programs i.e. **Postman**.  
 **Superuser** is set to:
 
 `Login:` admin  
