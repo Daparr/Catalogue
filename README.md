@@ -15,10 +15,7 @@ Frontend is not fully implemented, therefore communication with API needs to be 
 `Login:` admin  
 `Password` admin
 
-## API endpoints 
-
-
-
+## API endpoints
 
 - `admin/`  Admin panel
 - `api/menulist/` **GET** all items
